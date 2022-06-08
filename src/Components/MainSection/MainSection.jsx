@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./MainSection.scss";
 const MainSection = () => {
   return (
