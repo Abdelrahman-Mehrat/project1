@@ -1,13 +1,22 @@
 .Top-nav {
-  background-color: rgb(173, 173, 173);
+  background-color: #fff9e7;
   height: 100px;
   display: flex;
   align-items: center;
-  .container{
+  border-bottom: 2px solid #f12b2b;
+  .container {
     display: flex;
+    align-items: center;
     justify-content: space-between;
   }
-  .logo-icon{
+  .logo-icon {
     font-size: 40px;
+  }
+  .btnNav-lang {
+    transition: 0.5s;
+    border-bottom: 1px solid #1976d2;
+  }
+  .btnNav-lang:hover {
+    border-bottom: 1px solid #f12b2b;
   }
 }

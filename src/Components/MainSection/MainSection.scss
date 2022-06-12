@@ -1,14 +1,22 @@
 .mainSection {
-  background-color: rgb(155, 185, 185);
   padding: 3rem 1.5rem;
 }
-
+.accordion-container {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #fff3d0 !important;
+}
+.AccordionDetails {
+  border-top: 2px solid rgb(255, 255, 255) !important;
+  display: flex;
+}
+.accord-title {
+  font-weight: bold !important;
+}
 .p-wrapper {
-  padding: 10px 20px;
   font-size: 20px;
   line-height: 1.4;
   background-color: white;
-  margin-bottom: 10px;
   border-radius: 20px;
   box-shadow: 4px 4px 61px 0px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 4px 4px 61px 0px rgba(0, 0, 0, 0.75);
