@@ -9,16 +9,9 @@
 .AccordionDetails {
   border-top: 2px solid rgb(255, 255, 255) !important;
   display: flex;
+  justify-content: space-between;
+  background-color: #ffebaf;
 }
 .accord-title {
   font-weight: bold !important;
-}
-.p-wrapper {
-  font-size: 20px;
-  line-height: 1.4;
-  background-color: white;
-  border-radius: 20px;
-  box-shadow: 4px 4px 61px 0px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: 4px 4px 61px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 4px 4px 61px 0px rgba(0, 0, 0, 0.75);
 }
