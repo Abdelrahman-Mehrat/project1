@@ -3,7 +3,11 @@
   padding: 0;
   box-sizing: border-box;
 }
-.container{
+.container {
   width: 95%;
   margin: 0px auto;
+}
+body,
+p {
+  font-family: "Cairo" !important;
 }

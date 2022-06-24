@@ -1,0 +1,20 @@
+.accordion-container {
+  margin-bottom: 10px;
+  background-color: #fff3d0 !important;
+  .AccordionSummary {
+    background-color: #fff3d0 !important;
+  }
+  .AccordionDetails {
+    border-top: 2px solid rgb(255, 255, 255) !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fffee7;
+  }
+  .accord-title {
+    font-weight: bold !important;
+  }
+  .select {
+    width: 100px;
+  }
+}

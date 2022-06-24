@@ -1,22 +1,27 @@
 .Top-nav {
   background-color: #fff9e7;
-  height: 100px;
-  display: flex;
-  align-items: center;
+  min-height: 100px;
   border-bottom: 2px solid #f12b2b;
   .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    .btnNav-lang {
+      display: inline-block;
+      transition: 0.5s;
+      border-bottom: 1px solid #1976d2;
+    }
+    .btnNav-lang:hover {
+      border-bottom: 1px solid #f12b2b;
+    }
   }
-  .logo-icon {
-    font-size: 40px;
-  }
-  .btnNav-lang {
-    transition: 0.5s;
-    border-bottom: 1px solid #1976d2;
-  }
-  .btnNav-lang:hover {
-    border-bottom: 1px solid #f12b2b;
+}
+@media screen and (max-width: 480px) {
+  .Top-nav {
+    .container {
+      justify-content: center;
+      padding: 1rem 0;
+    }
   }
 }

@@ -1,5 +1,10 @@
 .container_parent {
   min-height: 100vh;
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 300px 1fr;
+}
+@media screen and (max-width: 768px) {
+  .container_parent {
+    grid-template-columns: 1fr;
+  }
 }

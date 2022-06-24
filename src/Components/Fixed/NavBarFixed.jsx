@@ -1,27 +1,26 @@
 import "./NavBarFixed.scss";
 import Button from "@mui/material/Button";
-import ButtonGroup from "@mui/material/ButtonGroup";
 import enLogo from "./logoEn.png";
-const NavBarFixed = ({ lang, langAr, langEn }) => {
+import arLogo from "./logo.png";
+const NavBarFixed = ({ lang, arBtn, enBtn }) => {
   console.log();
   return (
     <nav className="Top-nav">
       <div className="container">
         <span className="logo-icon">
-          <img src={enLogo} alt="" />
+          {lang == "EN" ? (
+            <img src={enLogo} alt="" />
+          ) : (
+            <img src={arLogo} alt="" />
+          )}
         </span>
         <span>
           {lang == "EN" ? (
-            <Button className="btnNav-lang" variant="outlined" onClick={langAr}>
+            <Button className="btnNav-lang" variant="outlined" onClick={arBtn}>
               العربيه
             </Button>
           ) : (
-            <Button
-              className="btnNav-lang"
-              n
-              variant="outlined"
-              onClick={langEn}
-            >
+            <Button className="btnNav-lang" variant="outlined" onClick={enBtn}>
               English
             </Button>
           )}

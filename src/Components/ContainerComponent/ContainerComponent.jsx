@@ -4,26 +4,25 @@ import MainSection from "../MainSection/MainSection";
 import SideBarFilter from "../SideBarFilter/SideBarFilter";
 import "./ContainerComponent.scss";
 const ContainerComponent = () => {
-  const [lang, setLang] = useState("EN");
+  const [lang, setLang] = useState("AR");
   const [items, setItems] = useState([]);
   const [allData, setAllData] = useState([]);
   const [pageCount, setpageCount] = useState(0);
   let limit = 10;
-
   useEffect(() => {
     const getItemsData = async () => {
       const res = await fetch(`http://localhost:9080/api/inquiries`);
       const data = await res.json();
-
       const total = data.length;
       setpageCount(Math.ceil(total / limit));
       const newData = data.slice(0, limit);
       setItems(newData);
+      console.log(data);
       setAllData(data);
     };
     getItemsData();
   }, []);
-
+  // pagination event
   const handlePageClick = (data) => {
     const clickedPage = data.selected + 1;
     let indexOfLastUnit = clickedPage * limit;
@@ -31,27 +30,20 @@ const ContainerComponent = () => {
     const newData = allData.slice(indexOfFirstUnit, indexOfLastUnit);
     console.log(newData);
     setItems(newData);
-    // window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
   };
-  // useEffect(() => {
-  //   getAllData();
-  // }, []);
-  // const getAllData = () => {
-  //   fetch("http://localhost:9080/api/inquiries")
-  //     .then((res) => res.json())
-  //     // .then((result) => console.log(result))
-  //     .then((result) => setAllData(result));
-  // };
-  const langAr = () => {
+  // Arabic & English Nav buttons
+  const arBtn = () => {
     setLang("AR");
-    // document.querySelector("html")
+    document.getElementsByTagName("html")[0].setAttribute("dir", "rtl");
   };
-  const langEn = () => {
+  const enBtn = () => {
     setLang("EN");
+    document.getElementsByTagName("html")[0].setAttribute("dir", "ltr");
   };
   return (
     <div>
-      <NavBarFixed lang={lang} langAr={langAr} langEn={langEn} />
+      <NavBarFixed lang={lang} arBtn={arBtn} enBtn={enBtn} />
       <div className="container_parent">
         <SideBarFilter />
         <MainSection

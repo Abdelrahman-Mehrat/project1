@@ -1,17 +1,8 @@
-.mainSection {
-  padding: 3rem 1.5rem;
+.sec-accordion {
+  padding: 1.5rem;
 }
-.accordion-container {
-  padding: 10px;
-  margin-bottom: 10px;
-  background-color: #fff3d0 !important;
-}
-.AccordionDetails {
-  border-top: 2px solid rgb(255, 255, 255) !important;
-  display: flex;
-  justify-content: space-between;
-  background-color: #ffebaf;
-}
-.accord-title {
-  font-weight: bold !important;
+@media screen and (max-width: 480px) {
+  .sec-accordion {
+    padding: 1.5rem 0.5rem;
+  }
 }
