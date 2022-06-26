@@ -6,7 +6,7 @@ const FilterForm = () => {
     <form action="" className="filterForm">
       <label htmlFor="">الكلمات الدالة</label>
       <span className="input-btn_container">
-        <TextField id="standard-basic" label="بحث" variant="standard" />
+        <TextField id="standard-basic" placeholder="بحث" variant="standard" />
         <Button className="search-btn">
           <SearchIcon />
         </Button>

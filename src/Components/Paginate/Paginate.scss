@@ -43,3 +43,9 @@
     background-color: rgb(190, 190, 190);
   }
 }
+@media screen and (max-width: 480px) {
+  .pagination-container a {
+    padding: 1px 12px;
+    margin: 5px;
+  }
+}

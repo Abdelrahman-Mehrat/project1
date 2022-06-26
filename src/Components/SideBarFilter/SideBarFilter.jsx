@@ -6,7 +6,6 @@ const SideBarFilter = () => {
   return (
     <div className="sideBar">
       <Filters />
-      <hr />
       <RecentArticles />
     </div>
   );
