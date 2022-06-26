@@ -3,23 +3,23 @@ import { useEffect, useState } from "react";
 import "./SideBarFilter.scss";
 
 const SideBarFilter = () => {
-  const [mainServices, setMainServices] = useState();
-  const [mainService, setMainService] = useState();
+  // const [mainServices, setMainServices] = useState();
+  // const [mainService, setMainService] = useState();
 
-  useEffect(() => {
-    fetch(`http://localhost:9080/api/mainservices`)
-      .then((response) => response.json())
-      .then((actualData) => {
-        setMainServices(actualData)
-        console.log(mainServices);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch(`http://localhost:9080/api/mainservices`)
+  //     .then((response) => response.json())
+  //     .then((actualData) => {
+  //       setMainServices(actualData);
+  //       console.log(mainServices);
+  //     });
+  // }, []);
 
   return (
     <div className="sideBar">
       <h2>تصفية</h2>
       <hr />
-      <div>
+      {/* <div>
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">الخدمة الرئيسية</InputLabel>
           <Select value={mainService} defaultValue="">
@@ -33,7 +33,7 @@ const SideBarFilter = () => {
             })}
           </Select>
         </FormControl>
-      </div>
+      </div> */}
     </div>
   );
 };
