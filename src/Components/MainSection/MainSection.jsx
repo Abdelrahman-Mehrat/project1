@@ -5,6 +5,8 @@ import Search from "../Search/Search";
 
 const MainSection = ({ items, pageCount, handlePageClick }) => {
 
+  
+
   return (
     <div className="mainSection">
       <section className="sec-accordion">

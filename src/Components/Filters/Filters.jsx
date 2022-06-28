@@ -1,17 +1,16 @@
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import "./Filter.scss";
-const Filters = () => {
-  //Vairables =>
+import { FilterContext } from '../Container/Container'
 
-  //main services
+const Filters = () => {
+  //Hooks
+  const { filters, setFilters } = useContext(FilterContext);
   const [mainServices, setMainServices] = useState();
   const [mainService, setMainService] = useState();
-  //sub services
   const [subService, setSubService] = useState();
   const [subServices, setSubServices] = useState();
 
-  //Use effect hook
   useEffect(() => {
     fetch(`http://localhost:9080/api/mainservices`)
       .then((response) => response.json())
@@ -25,6 +24,14 @@ const Filters = () => {
   const handleMainServiceChange = (event) => {
     let mainServiceId = event.target.value;
     getSubServices(mainServiceId);
+    filters.mainService = mainServiceId;
+    setFilters(filters);
+  };
+
+  const handleSubServiceChange = (event) => {
+    let subServiceId = event.target.value;
+    filters.subService = subServiceId;
+    setFilters(filters);
   };
 
   const getSubServices = (mainServiceId) => {
@@ -60,8 +67,7 @@ const Filters = () => {
                 <MenuItem
                   className="selector-item"
                   key={option.Id}
-                  value={option.Id}
-                >
+                  value={option.Id}>
                   {option.NameAr ?? option.NameAr}
                 </MenuItem>
               );
@@ -76,7 +82,7 @@ const Filters = () => {
           >
             الخدمة الفرعية
           </InputLabel>
-          <Select value={subService} defaultValue="">
+          <Select value={subService} defaultValue="" onChange={handleSubServiceChange}>
             <MenuItem value="">اختر</MenuItem>
             {subServices?.map((option) => {
               return (

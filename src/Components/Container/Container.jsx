@@ -1,14 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext } from "react";
 import Header from "../Header/Header";
 import MainSection from "../MainSection/MainSection";
 import SideBar from "../SideBar/SideBar";
 import "./Container.scss";
+
+export const FilterContext = createContext();
 
 const Container = () => {
   const [lang, setLang] = useState("AR");
   const [items, setItems] = useState([]);
   const [allData, setAllData] = useState([]);
   const [pageCount, setpageCount] = useState(0);
+  const [filters, setFilters] = useState({});
+  const filtersValue = { filters, setFilters };
+
   let limit = 10;
 
   useEffect(() => {
@@ -24,7 +29,7 @@ const Container = () => {
     };
     getItemsData();
   }, []);
-  
+
   // pagination event
   const handlePageClick = (data) => {
     const clickedPage = data.selected + 1;
@@ -44,16 +49,22 @@ const Container = () => {
     setLang("EN");
     document.getElementsByTagName("html")[0].setAttribute("dir", "ltr");
   };
+
+  const handleOnClickShowFilters = () => {
+    console.log(filters)
+  }
   return (
     <div>
       <Header lang={lang} arBtn={arBtn} enBtn={enBtn} />
       <div className="container_parent">
-        <SideBar />
-        <MainSection
-          items={items}
-          pageCount={pageCount}
-          handlePageClick={handlePageClick}
-        />
+        <FilterContext.Provider value={filtersValue}>
+          <SideBar />
+          <MainSection
+            items={items}
+            pageCount={pageCount}
+            handlePageClick={handlePageClick} />
+          <button onClick={handleOnClickShowFilters}>Log Filters</button>
+        </FilterContext.Provider>
       </div>
     </div>
   );
