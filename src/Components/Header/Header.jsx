@@ -2,20 +2,21 @@ import "./Header.scss";
 import Button from "@mui/material/Button";
 import enLogo from "./logoEn.png";
 import arLogo from "./logo.png";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { langContext } from "../LangContext";
 const Header = () => {
-  const { ChangeLang, lang } = useContext(langContext);
+  const { ChangeLang, lang, translation } = useContext(langContext);
+  const [translated, setTranslated] = useState([]);
+  useEffect(() => {
+    const currentLang = localStorage.getItem("lang");
+    setTranslated(translation[currentLang].navBarComponent);
+  });
   console.log();
   return (
     <nav className="Top-nav">
       <div className="container">
         <span className="logo-icon">
-          {lang === "en" ? (
-            <img src={enLogo} alt="" />
-          ) : (
-            <img src={arLogo} alt="" />
-          )}
+          {<img src={lang === "en" ? enLogo : arLogo} alt="" />}
         </span>
         <span>
           <Button
@@ -23,9 +24,9 @@ const Header = () => {
             variant="outlined"
             onClick={ChangeLang}
           >
-            {lang === "ar" ? "English" : "العربية"}
+            {translated.langBtn}
           </Button>
-          {/* {lang === "EN" ? (
+          {/* {lang === "EN" ? (  
             <Button className="btnNav-lang" variant="outlined" onClick={arBtn}>
               العربيه
             </Button>

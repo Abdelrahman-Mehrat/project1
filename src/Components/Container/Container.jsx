@@ -6,10 +6,7 @@ import SideBar from "../SideBar/SideBar";
 import "./Container.scss";
 
 export const FilterContext = createContext();
-// export const langContext = createContext();
-
 const Container = () => {
-  // const [lang, setLang] = useState("AR");
   const [items, setItems] = useState([]);
   const [allData, setAllData] = useState([]);
   const [pageCount, setpageCount] = useState(0);
@@ -40,23 +37,13 @@ const Container = () => {
     setItems(newData);
     window.scrollTo(0, 0);
   };
-  // Arabic & English Nav button
-  // const ChangeLang = () => {
-  //   if (lang === "AR") {
-  //     setLang("EN");
-  //     document.getElementsByTagName("html")[0].setAttribute("dir", "ltr");
-  //   } else {
-  //     setLang("AR");
-  //     document.getElementsByTagName("html")[0].setAttribute("dir", "rtl");
-  //   }
-  // };
+
   const handleOnClickShowFilters = () => {
     console.log(filters);
   };
   return (
     <div>
       <LangProvider>
-        {/* <langContext.Provider value={{ lang, ChangeLang }}> */}
         <Header />
         <div className="container_parent">
           <FilterContext.Provider value={filtersValue}>
@@ -69,7 +56,6 @@ const Container = () => {
             <button onClick={handleOnClickShowFilters}>Log Filters</button>
           </FilterContext.Provider>
         </div>
-        {/* </langContext.Provider> */}
       </LangProvider>
     </div>
   );

@@ -1,9 +1,9 @@
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { useEffect, useState, useContext } from "react";
 import "./Filter.scss";
-import { FilterContext } from '../Container/Container'
+import { FilterContext } from "../Container/Container";
 
-const Filters = () => {
+const Filters = ({ Translated }) => {
   //Hooks
   const { filters, setFilters } = useContext(FilterContext);
   const [mainServices, setMainServices] = useState();
@@ -47,14 +47,14 @@ const Filters = () => {
 
   return (
     <div className="sidebar-filter">
-      <h2 className="filter-title">تصفية</h2>
+      <h2 className="filter-title">{Translated.title1}</h2>
       <div className="sidebar-filter__container">
         <FormControl className="side-filterForm" variant="standard">
           <InputLabel
             labelId="demo-simple-select-standard-label"
             id="demo-simple-select-standard"
           >
-            الخدمة الرئيسية
+            {Translated.mainFilter}
           </InputLabel>
           <Select
             value={mainService}
@@ -67,7 +67,8 @@ const Filters = () => {
                 <MenuItem
                   className="selector-item"
                   key={option.Id}
-                  value={option.Id}>
+                  value={option.Id}
+                >
                   {option.NameAr ?? option.NameAr}
                 </MenuItem>
               );
@@ -80,9 +81,13 @@ const Filters = () => {
             labelId="demo-simple-select-standard-label"
             id="demo-simple-select-standard"
           >
-            الخدمة الفرعية
+            {Translated.secondFilter}
           </InputLabel>
-          <Select value={subService} defaultValue="" onChange={handleSubServiceChange}>
+          <Select
+            value={subService}
+            defaultValue=""
+            onChange={handleSubServiceChange}
+          >
             <MenuItem value="">اختر</MenuItem>
             {subServices?.map((option) => {
               return (

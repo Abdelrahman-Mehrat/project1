@@ -5,14 +5,14 @@ function Paginate({ pageCount, handlePageClick }) {
   return (
     <div className="container">
       <ReactPaginate
-        previousLabel={"<"}
+        previousLabel={<>&rarr;</>}
         previousLinkClassName={"page-prevBtn"}
-        nextLabel={">"}
+        nextLabel={<>&larr;</>}
         nextLinkClassName={"page-nextBtn"}
         breakLabel={"..."}
         pageCount={pageCount}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={3}
+        marginPagesDisplayed={1}
+        pageRangeDisplayed={2}
         onPageChange={handlePageClick}
         containerClassName={"pagination-container"}
         disabledClassName={"paginationDisabled"}

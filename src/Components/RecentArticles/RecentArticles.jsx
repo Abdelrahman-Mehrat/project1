@@ -1,6 +1,4 @@
-
-const RecentArticles = () => {
-
-    return <h2>اخر التحديثات</h2>
-}
-export default RecentArticles 
+const RecentArticles = ({ Translated }) => {
+  return <h2>{Translated.title2}</h2>;
+};
+export default RecentArticles;
