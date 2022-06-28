@@ -1,21 +1,21 @@
 import { useState, useEffect, createContext } from "react";
 import Header from "../Header/Header";
+import LangProvider from "../LangContext";
 import MainSection from "../MainSection/MainSection";
 import SideBar from "../SideBar/SideBar";
 import "./Container.scss";
 
 export const FilterContext = createContext();
+// export const langContext = createContext();
 
 const Container = () => {
-  const [lang, setLang] = useState("AR");
+  // const [lang, setLang] = useState("AR");
   const [items, setItems] = useState([]);
   const [allData, setAllData] = useState([]);
   const [pageCount, setpageCount] = useState(0);
   const [filters, setFilters] = useState({});
   const filtersValue = { filters, setFilters };
-
   let limit = 10;
-
   useEffect(() => {
     const getItemsData = async () => {
       const res = await fetch(`http://localhost:9080/api/inquiries`);
@@ -40,32 +40,37 @@ const Container = () => {
     setItems(newData);
     window.scrollTo(0, 0);
   };
-  // Arabic & English Nav buttons
-  const arBtn = () => {
-    setLang("AR");
-    document.getElementsByTagName("html")[0].setAttribute("dir", "rtl");
-  };
-  const enBtn = () => {
-    setLang("EN");
-    document.getElementsByTagName("html")[0].setAttribute("dir", "ltr");
-  };
-
+  // Arabic & English Nav button
+  // const ChangeLang = () => {
+  //   if (lang === "AR") {
+  //     setLang("EN");
+  //     document.getElementsByTagName("html")[0].setAttribute("dir", "ltr");
+  //   } else {
+  //     setLang("AR");
+  //     document.getElementsByTagName("html")[0].setAttribute("dir", "rtl");
+  //   }
+  // };
   const handleOnClickShowFilters = () => {
-    console.log(filters)
-  }
+    console.log(filters);
+  };
   return (
     <div>
-      <Header lang={lang} arBtn={arBtn} enBtn={enBtn} />
-      <div className="container_parent">
-        <FilterContext.Provider value={filtersValue}>
-          <SideBar />
-          <MainSection
-            items={items}
-            pageCount={pageCount}
-            handlePageClick={handlePageClick} />
-          <button onClick={handleOnClickShowFilters}>Log Filters</button>
-        </FilterContext.Provider>
-      </div>
+      <LangProvider>
+        {/* <langContext.Provider value={{ lang, ChangeLang }}> */}
+        <Header />
+        <div className="container_parent">
+          <FilterContext.Provider value={filtersValue}>
+            <SideBar />
+            <MainSection
+              items={items}
+              pageCount={pageCount}
+              handlePageClick={handlePageClick}
+            />
+            <button onClick={handleOnClickShowFilters}>Log Filters</button>
+          </FilterContext.Provider>
+        </div>
+        {/* </langContext.Provider> */}
+      </LangProvider>
     </div>
   );
 };
