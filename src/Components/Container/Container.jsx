@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react";
-import NavBarFixed from "../Fixed/NavBarFixed";
+import Header from "../Header/Header";
 import MainSection from "../MainSection/MainSection";
-import SideBarFilter from "../SideBarFilter/SideBarFilter";
-import "./ContainerComponent.scss";
-const ContainerComponent = () => {
+import SideBar from "../SideBar/SideBar";
+import "./Container.scss";
+
+const Container = () => {
   const [lang, setLang] = useState("AR");
   const [items, setItems] = useState([]);
   const [allData, setAllData] = useState([]);
   const [pageCount, setpageCount] = useState(0);
   let limit = 10;
+
   useEffect(() => {
     const getItemsData = async () => {
       const res = await fetch(`http://localhost:9080/api/inquiries`);
@@ -22,6 +24,7 @@ const ContainerComponent = () => {
     };
     getItemsData();
   }, []);
+  
   // pagination event
   const handlePageClick = (data) => {
     const clickedPage = data.selected + 1;
@@ -43,9 +46,9 @@ const ContainerComponent = () => {
   };
   return (
     <div>
-      <NavBarFixed lang={lang} arBtn={arBtn} enBtn={enBtn} />
+      <Header lang={lang} arBtn={arBtn} enBtn={enBtn} />
       <div className="container_parent">
-        <SideBarFilter />
+        <SideBar />
         <MainSection
           items={items}
           pageCount={pageCount}
@@ -55,4 +58,4 @@ const ContainerComponent = () => {
     </div>
   );
 };
-export default ContainerComponent;
+export default Container;

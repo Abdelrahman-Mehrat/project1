@@ -1,9 +1,9 @@
 import { TextField, Button } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import "./FilterForm.scss";
-const FilterForm = () => {
+import "./Search.scss";
+const Search = () => {
   return (
-    <form action="" className="filterForm">
+    <form action="" className="searchForm">
       <label htmlFor="">الكلمات الدالة</label>
       <span className="input-btn_container">
         <TextField id="standard-basic" placeholder="بحث" variant="standard" />
@@ -14,4 +14,4 @@ const FilterForm = () => {
     </form>
   );
 };
-export default FilterForm;
+export default Search;

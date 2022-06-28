@@ -1,4 +1,4 @@
-.filterForm {
+.searchForm {
   display: flex;
   align-items: flex-end;
   flex-wrap: wrap;
@@ -17,7 +17,7 @@
   }
 }
 @media screen and (max-width: 480px) {
-  .filterForm {
+  .searchForm {
     justify-content: center;
   }
 }

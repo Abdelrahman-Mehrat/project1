@@ -7,8 +7,8 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 // accordion style
-import "./AccordionItem.scss";
-// dropdown
+import "./Article.scss";
+
 const AccordionItem = ({ item }) => {
   const [values, setValues] = React.useState(["PDF1", "PDF2"]);
   const [selected, setSelected] = useState("");

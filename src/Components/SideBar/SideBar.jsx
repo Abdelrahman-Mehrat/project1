@@ -1,8 +1,8 @@
 import Filters from "../Filters/Filters";
 import RecentArticles from "../RecentArticles/RecentArticles";
-import "./SideBarFilter.scss";
+import "./SideBar.scss";
 
-const SideBarFilter = () => {
+const SideBar = () => {
   return (
     <div className="sideBar">
       <Filters />
@@ -10,4 +10,4 @@ const SideBarFilter = () => {
     </div>
   );
 };
-export default SideBarFilter;
+export default SideBar;

@@ -1,5 +1,6 @@
 import ReactPaginate from "react-paginate";
 import "./Paginate.scss";
+
 function Paginate({ pageCount, handlePageClick }) {
   return (
     <div className="container">
