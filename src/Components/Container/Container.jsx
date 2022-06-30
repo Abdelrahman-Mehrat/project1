@@ -6,26 +6,44 @@ import SideBar from "../SideBar/SideBar";
 import "./Container.scss";
 
 export const FilterContext = createContext();
+
 const Container = () => {
+
   const [items, setItems] = useState([]);
   const [allData, setAllData] = useState([]);
   const [pageCount, setpageCount] = useState(0);
   const [filters, setFilters] = useState({});
   const filtersValue = { filters, setFilters };
+  const apiUrl = `http://localhost:9080/api/inquiries`;
   let limit = 10;
+
   useEffect(() => {
-    const getItemsData = async () => {
-      const res = await fetch(`http://localhost:9080/api/inquiries`);
-      const data = await res.json();
-      const total = data.length;
-      setpageCount(Math.ceil(total / limit));
-      const newData = data.slice(0, limit);
-      setItems(newData);
-      console.log(data);
-      setAllData(data);
-    };
     getItemsData();
+    filters.searchHandler = searchHandler;
+    setFilters(filters);
   }, []);
+
+  const getItemsData = async () => {
+    const res = await fetch(apiUrl);
+    const data = await res.json();
+    const total = data.length;
+    setpageCount(Math.ceil(total / limit));
+    const newData = data.slice(0, limit);
+    setItems(newData);
+    console.log(data);
+    setAllData(data);
+  };
+
+  const searchHandler = async () => {
+    alert('search in parent')
+
+    const response = await fetch(apiUrl, {
+      method: 'GET',
+      body: JSON.stringify(filters)
+    });
+    console.log(response.json())
+    return response.json();
+  }
 
   // pagination event
   const handlePageClick = (data) => {
@@ -38,9 +56,6 @@ const Container = () => {
     window.scrollTo(0, 0);
   };
 
-  const handleOnClickShowFilters = () => {
-    console.log(filters);
-  };
   return (
     <div>
       <LangProvider>
@@ -53,7 +68,6 @@ const Container = () => {
               pageCount={pageCount}
               handlePageClick={handlePageClick}
             />
-            <button onClick={handleOnClickShowFilters}>Log Filters</button>
           </FilterContext.Provider>
         </div>
       </LangProvider>

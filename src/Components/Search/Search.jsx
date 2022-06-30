@@ -5,19 +5,28 @@ import { useContext, useState, useEffect } from "react";
 import { FilterContext } from "../Container/Container";
 import { langContext } from "../LangContext";
 const Search = () => {
+
+  const [searchKeyword, setSearchKeyword] = useState('')
   const { filters, setFilters } = useContext(FilterContext);
-  const handleSearch = (event) => {
-    let searchKeyword = event.target.value;
-    filters.keyword = searchKeyword;
-    setFilters(filters);
-  };
+
   // translation state & useEffect
   const { translation } = useContext(langContext);
   const [translated, setTranslated] = useState([]);
+
   useEffect(() => {
     const currentLang = localStorage.getItem("lang");
     setTranslated(translation[currentLang].searchComponent);
   });
+
+  const handleOnChange = event => {
+    setSearchKeyword(event.target.value)
+  }
+
+  const handleOnClick = event => {
+    filters.keyword = searchKeyword;
+    setFilters(filters);
+    filters.searchHandler()
+  }
 
   return (
     <form action="" className="searchForm">
@@ -27,8 +36,8 @@ const Search = () => {
           id="standard-basic"
           placeholder={translated.inputPlaceholder}
           variant="standard"
-        />
-        <Button className="search-btn" onClick={handleSearch}>
+          onChange={handleOnChange} />
+        <Button className="search-btn" onClick={handleOnClick}>
           <SearchIcon />
         </Button>
       </span>
