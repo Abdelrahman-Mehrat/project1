@@ -39,7 +39,7 @@ const AccordionItem = ({ item }) => {
               onChange={handleChange}
             >
               {values.map((value, index) => {
-                return <MenuItem value={value}>{value}</MenuItem>;
+                return <MenuItem value={value} key={index}>{value}</MenuItem>;
               })}
             </Select>
           </FormControl>

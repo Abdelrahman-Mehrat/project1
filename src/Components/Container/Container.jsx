@@ -3,6 +3,8 @@ import Header from "../Header/Header";
 import LangProvider from "../LangContext";
 import MainSection from "../MainSection/MainSection";
 import SideBar from "../SideBar/SideBar";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 import "./Container.scss";
 
 export const FilterContext = createContext();
@@ -15,6 +17,8 @@ const Container = () => {
   const [filters, setFilters] = useState({});
   const filtersValue = { filters, setFilters };
   const apiUrl = `http://localhost:9080/api/inquiries`;
+  const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+
   let limit = 10;
 
   useEffect(() => {
@@ -30,19 +34,21 @@ const Container = () => {
     setpageCount(Math.ceil(total / limit));
     const newData = data.slice(0, limit);
     setItems(newData);
-    console.log(data);
     setAllData(data);
   };
 
-  const searchHandler = async () => {
+  const searchHandler = () => {
     alert('search in parent')
-
-    const response = await fetch(apiUrl, {
-      method: 'GET',
-      body: JSON.stringify(filters)
+    console.log(allData)
+    const filteredArticles = allData.filter(obj => {
+      return obj.Question.toLowerCase().includes(filters.keyword.toLowerCase())
+        || obj.Answer.toLowerCase().includes(filters.keyword.toLowerCase());
+      //to do
+      //|| obj.MainService == filters.
     });
-    console.log(response.json())
-    return response.json();
+    console.log(filteredArticles);
+    setAllData(filteredArticles)
+    return filteredArticles;
   }
 
   // pagination event
@@ -51,7 +57,6 @@ const Container = () => {
     let indexOfLastUnit = clickedPage * limit;
     let indexOfFirstUnit = indexOfLastUnit - limit;
     const newData = allData.slice(indexOfFirstUnit, indexOfLastUnit);
-    console.log(newData);
     setItems(newData);
     window.scrollTo(0, 0);
   };
@@ -63,11 +68,18 @@ const Container = () => {
         <div className="container_parent">
           <FilterContext.Provider value={filtersValue}>
             <SideBar />
-            <MainSection
-              items={items}
-              pageCount={pageCount}
-              handlePageClick={handlePageClick}
-            />
+            <Box
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              minHeight="100vh" >
+              {items.length > 0 ? (<MainSection
+                items={items}
+                pageCount={pageCount}
+                handlePageClick={handlePageClick} />) :
+                <CircularProgress color="error" />
+              }
+            </Box>
           </FilterContext.Provider>
         </div>
       </LangProvider>

@@ -1,6 +1,6 @@
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { useEffect, useState, useContext } from "react";
-import "./Filter.scss";
+import "./Filters.scss";
 import { FilterContext } from "../Container/Container";
 
 const Filters = ({ Translated }) => {
@@ -46,10 +46,7 @@ const Filters = ({ Translated }) => {
             <h2 className="filter-title">{Translated.title1}</h2>
             <div className="sidebar-filter__container">
                 <FormControl className="side-filterForm" variant="standard">
-                    <InputLabel
-                        labelId="demo-simple-select-standard-label"
-                        id="demo-simple-select-standard"
-                    >
+                    <InputLabel id="demo-simple-select-standard">
                         {Translated.mainFilter}
                     </InputLabel>
                     <Select
@@ -73,10 +70,7 @@ const Filters = ({ Translated }) => {
                 </FormControl>
 
                 <FormControl className="side-filterForm" variant="standard">
-                    <InputLabel
-                        labelId="demo-simple-select-standard-label"
-                        id="demo-simple-select-standard"
-                    >
+                    <InputLabel id="demo-simple-select-standard">
                         {Translated.secondFilter}
                     </InputLabel>
                     <Select
