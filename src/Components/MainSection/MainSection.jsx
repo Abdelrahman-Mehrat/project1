@@ -5,17 +5,14 @@ import Search from "../Search/Search";
 
 const MainSection = ({ items, pageCount, handlePageClick }) => {
 
-  
-
   return (
     <div className="mainSection">
       <section className="sec-accordion">
         <Search />
         {items?.map((item) => {
-          return <Article item={item} />;
+          return <Article item={item} key={item.Id} />;
         })}
       </section>
-
       <Paginate pageCount={pageCount} handlePageClick={handlePageClick} />
     </div>
   );
