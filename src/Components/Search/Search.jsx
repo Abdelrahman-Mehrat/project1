@@ -2,16 +2,14 @@ import { TextField, Button } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import "./Search.scss";
 import { useContext, useState, useEffect } from "react";
-import { FilterContext } from "../Container/Container";
 import { langContext } from "../LangContext";
-const Search = () => {
 
-  const [searchKeyword, setSearchKeyword] = useState('')
-  const { filters, setFilters } = useContext(FilterContext);
+const Search = (props) => {
 
   // translation state & useEffect
   const { translation } = useContext(langContext);
   const [translated, setTranslated] = useState([]);
+  const [searchKeyword, setSearchKeyword] = useState('');
 
   useEffect(() => {
     const currentLang = localStorage.getItem("lang");
@@ -23,9 +21,7 @@ const Search = () => {
   }
 
   const handleOnClick = event => {
-    filters.keyword = searchKeyword;
-    setFilters(filters);
-    filters.searchHandler()
+    props.keywordChange(searchKeyword)
   }
 
   return (

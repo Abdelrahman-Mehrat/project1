@@ -1,11 +1,9 @@
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { useEffect, useState, useContext } from "react";
 import "./Filters.scss";
-import { FilterContext } from "../Container/Container";
 
 const Filters = ({ Translated }) => {
     //Hooks
-    const { filters, setFilters } = useContext(FilterContext);
     const [mainServices, setMainServices] = useState();
     const [mainService, setMainService] = useState();
     const [subService, setSubService] = useState();
@@ -22,15 +20,13 @@ const Filters = ({ Translated }) => {
     //Methods =>
     const handleMainServiceChange = (event) => {
         let mainServiceId = event.target.value;
+        setMainService(mainServiceId);
         getSubServices(mainServiceId);
-        filters.mainService = mainServiceId;
-        setFilters(filters);
     };
 
     const handleSubServiceChange = (event) => {
         let subServiceId = event.target.value;
-        filters.subService = subServiceId;
-        setFilters(filters);
+        setSubService(subServiceId);
     };
 
     const getSubServices = (mainServiceId) => {
