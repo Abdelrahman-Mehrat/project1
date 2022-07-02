@@ -1,7 +1,8 @@
 import "./Header.scss";
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
 import enLogo from "./logoEn.png";
 import arLogo from "./logo.png";
+import LanguageIcon from "@mui/icons-material/Language";
 import { useContext, useEffect, useState } from "react";
 import { langContext } from "../LangContext";
 const Header = () => {
@@ -15,27 +16,16 @@ const Header = () => {
   return (
     <nav className="Top-nav">
       <div className="container">
-        <span className="logo-icon">
-          {<img src={lang === "en" ? enLogo : arLogo} alt="" />}
-        </span>
-        <span>
-          <Button
-            className="btnNav-lang"
-            variant="outlined"
-            onClick={ChangeLang}
-          >
+        <div className="co-name">
+          <span className="logo-icon">
+            {<img src={lang === "en" ? enLogo : arLogo} alt="" />}
+          </span>
+          <button className="btnNav-lang" onClick={ChangeLang}>
+            <LanguageIcon fontSize="small" />
             {translated.langBtn}
-          </Button>
-          {/* {lang === "EN" ? (  
-            <Button className="btnNav-lang" variant="outlined" onClick={arBtn}>
-              العربيه
-            </Button>
-          ) : (
-            <Button className="btnNav-lang" variant="outlined" onClick={enBtn}>
-              English
-            </Button>
-          )} */}
-        </span>
+          </button>
+        </div>
+        <h1>Knowledge base</h1>
       </div>
     </nav>
   );

@@ -7,6 +7,8 @@
     width: 90%;
   }
   .filter-title {
+    background-color: #8b0001;
+    background-image: linear-gradient(315deg, #8b0001 0%, #b12e21 74%);
     margin-bottom: 10px;
     border-bottom: 3px solid #ffffff;
   }
@@ -23,9 +25,6 @@
       display: flex;
       gap: 10px;
       justify-content: space-between;
-      .side-filterForm {
-        // margin-bottom: 0px;
-      }
     }
   }
 }

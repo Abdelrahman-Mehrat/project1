@@ -6,6 +6,7 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
+import ArticleIcon from "@mui/icons-material/Article";
 // accordion style
 import "./Article.scss";
 
@@ -24,7 +25,9 @@ const AccordionItem = ({ item }) => {
         aria-controls="panel1a-content"
         id="panel1a-header"
       >
-        <Typography className="accord-title">{item.Question}</Typography>
+        <Typography className="accord-title">
+          <ArticleIcon className="question-icon" /> {item.Question}
+        </Typography>
       </AccordionSummary>
       <AccordionDetails className="AccordionDetails">
         <Typography>{item.Answer}</Typography>
@@ -39,7 +42,11 @@ const AccordionItem = ({ item }) => {
               onChange={handleChange}
             >
               {values.map((value, index) => {
-                return <MenuItem value={value} key={index}>{value}</MenuItem>;
+                return (
+                  <MenuItem value={value} key={index}>
+                    {value}
+                  </MenuItem>
+                );
               })}
             </Select>
           </FormControl>

@@ -8,12 +8,29 @@
     justify-content: space-between;
     flex-wrap: wrap;
     .btnNav-lang {
-      display: inline-block;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      color: rgb(39, 39, 39);
+      border: none;
+      border-bottom: 2px solid #bf9e66;
+      font-size: 15px;
+      background-color: transparent;
+      padding: 2px;
       transition: 0.5s;
-      border-bottom: 1px solid #1976d2;
+      cursor: pointer;
+      // font-weight: bold;
     }
     .btnNav-lang:hover {
-      border-bottom: 1px solid #f12b2b;
+      border-bottom: 2px solid #f12b2b;
+      color: black;
+    }
+    .co-name {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
     }
   }
 }

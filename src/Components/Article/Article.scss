@@ -12,7 +12,13 @@
     background-color: #fffee7;
   }
   .accord-title {
+    display: flex;
+    align-items: center;
+    gap: 5px;
     font-weight: bold !important;
+    .question-icon {
+      color: #a98549;
+    }
   }
   .select {
     width: 100px;
