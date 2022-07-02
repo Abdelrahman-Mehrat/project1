@@ -6,8 +6,8 @@ import SideBar from "../SideBar/SideBar";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import "./Container.scss";
-import ArticlesProvider from "../Context/AriclesContext";
-import { articlesContext } from "../Context/AriclesContext";
+// import ArticlesProvider from "../Context/AriclesContext";
+// import { articlesContext } from "../Context/AriclesContext";
 const Container = () => {
   // const { pageArticles, articles, pageCount } = useContext(articlesContext);
   const apiUrl = `http://localhost:9080/api/inquiries`;
@@ -58,35 +58,35 @@ const Container = () => {
     });
     console.log(filteredArticles);
   };
-
   return (
     <div>
-      <ArticlesProvider>
-        <LangProvider>
-          <Header />
-          <div className="container_parent">
-            <SideBar />
-            <Box
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              minHeight="100vh"
-            >
-              {pageArticles.length > 0 ? (
-                <MainSection
-                  items={pageArticles}
-                  pageCount={pageCount}
-                  keyword={keyword}
-                  keywordChange={updateKeyword}
-                />
-              ) : (
-                <CircularProgress color="error" />
-              )}
-            </Box>
-            <button onClick={searchHandler}>search</button>
-          </div>
-        </LangProvider>
-      </ArticlesProvider>
+      {/* <ArticlesProvider> */}
+      <LangProvider>
+        <Header />
+        <div className="container_parent">
+          <SideBar />
+          <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            minHeight="100vh"
+          >
+            {pageArticles.length > 0 ? (
+              <MainSection
+                handlePageClick={handlePageClick}
+                items={pageArticles}
+                pageCount={pageCount}
+                keyword={keyword}
+                keywordChange={updateKeyword}
+              />
+            ) : (
+              <CircularProgress color="error" />
+            )}
+          </Box>
+          <button onClick={searchHandler}>search</button>
+        </div>
+      </LangProvider>
+      {/* </ArticlesProvider> */}
     </div>
   );
 };
