@@ -1,13 +1,14 @@
 import ReactPaginate from "react-paginate";
 import "./Paginate.scss";
-
+import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
+import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 function Paginate({ pageCount, handlePageClick }) {
   return (
     <div className="container">
       <ReactPaginate
-        previousLabel={<>&rarr;</>}
+        previousLabel={<ArrowRightIcon fontSize="small" />}
         previousLinkClassName={"page-prevBtn"}
-        nextLabel={<>&larr;</>}
+        nextLabel={<ArrowLeftIcon fontSize="small" />}
         nextLinkClassName={"page-nextBtn"}
         breakLabel={"..."}
         pageCount={pageCount}

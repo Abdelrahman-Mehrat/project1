@@ -61,7 +61,9 @@ const MainSection = () => {
     setKeyword(event.target.value);
     // searchHandler();
   };
-  const handleFilterSearch = (event) => {
+
+  useEffect(() => {
+    // debugger;
     if (keyword) {
       const filteredArticles = articles.filter((obj) => {
         return (
@@ -77,40 +79,15 @@ const MainSection = () => {
       const newData = filteredArticles.slice(0, limit);
       setPageArticles(newData);
     } else {
+      // setArticlesFilter(filteredArticles);
+      // setIsEmpty(true);
       const totalCount = articles.length;
       setpageCount(Math.ceil(totalCount / limit));
       const newData = articles.slice(0, limit);
       setPageArticles(newData);
       handlePageClick({ isEmpty: true, selected: 1 });
     }
-  };
-
-  // useEffect(() => {
-  // debugger;
-  // if (keyword) {
-  //   const filteredArticles = articles.filter((obj) => {
-  //     return (
-  //       obj.Question.toLowerCase().includes(keyword.toLowerCase()) ||
-  //       obj.Answer.toLowerCase().includes(keyword.toLowerCase())
-  //     );
-  //     //to do
-  //     //|| obj.MainService == filters.
-  //   });
-  //   setArticlesFilter(filteredArticles);
-  //   const totalCount = filteredArticles.length;
-  //   setpageCount(Math.ceil(totalCount / limit));
-  //   const newData = filteredArticles.slice(0, limit);
-  //   setPageArticles(newData);
-  // } else {
-  //   // setArticlesFilter(filteredArticles);
-  //   // setIsEmpty(true);
-  //   const totalCount = articles.length;
-  //   setpageCount(Math.ceil(totalCount / limit));
-  //   const newData = articles.slice(0, limit);
-  //   setPageArticles(newData);
-  //   handlePageClick({ isEmpty: true, selected: 1 });
-  // }
-  // }, [keyword]);
+  }, [keyword]);
 
   // const searchHandler = () => {
 
@@ -127,7 +104,7 @@ const MainSection = () => {
             value={keyword}
             onChange={handleOnChange}
           />
-          <Button className="search-btn" onClick={handleFilterSearch}>
+          <Button className="search-btn">
             <SearchIcon />
           </Button>
         </span>
