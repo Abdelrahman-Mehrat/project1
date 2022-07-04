@@ -1,8 +1,35 @@
 .sec-accordion {
   padding: 1.5rem;
 }
+
+.searchForm {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 0px 0px 20px 0px;
+
+  .input-btn_container {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .TextField {
+    background-color: red;
+  }
+
+  .search-btn {
+    color: #bf9a5a;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .sec-accordion {
     padding: 1.5rem 0.5rem;
+  }
+
+  .searchForm {
+    justify-content: center;
   }
 }
