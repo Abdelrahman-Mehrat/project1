@@ -39,7 +39,7 @@ const Filters = ({ Translated }) => {
 
     return (
         <div className="sidebar-filter">
-            <h2 className="filter-title">{Translated.title1}</h2>
+            <h3 className="filter-title">{Translated.title1}</h3>
             <div className="sidebar-filter__container">
                 <FormControl className="side-filterForm" variant="standard">
                     <InputLabel id="demo-simple-select-standard">

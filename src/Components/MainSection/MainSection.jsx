@@ -32,6 +32,7 @@ const MainSection = () => {
     const currentLang = localStorage.getItem("lang");
     setTranslated(translation[currentLang].searchComponent);
   });
+
   const getItemsData = async () => {
     const res = await fetch(apiUrl);
     const jsonRes = await res.json();
@@ -42,6 +43,7 @@ const MainSection = () => {
     setArticles(jsonRes);
     setArticlesFilter(jsonRes);
   };
+
   // pagination event
   const handlePageClick = (data) => {
     let clickedPage = data.selected + 1;
@@ -57,13 +59,12 @@ const MainSection = () => {
     window.scrollTo(0, 0);
     return clickedPage;
   };
+
   const handleOnChange = (event) => {
     setKeyword(event.target.value);
-    // searchHandler();
   };
 
   useEffect(() => {
-    // debugger;
     if (keyword) {
       const filteredArticles = articles.filter((obj) => {
         return (
@@ -89,21 +90,17 @@ const MainSection = () => {
     }
   }, [keyword]);
 
-  // const searchHandler = () => {
-
-  // };
   return (
     <div className="mainSection">
       <form action="" className="searchForm">
-        <label htmlFor="">{translated.keys}</label>
+        <label htmlFor="txtSearch">{translated.keyword}</label>
         <span className="input-btn_container">
           <TextField
-            id="standard-basic"
+            id="txtSearch"
             placeholder={translated.inputPlaceholder}
             variant="standard"
             value={keyword}
-            onChange={handleOnChange}
-          />
+            onChange={handleOnChange} />
           <Button className="search-btn">
             <SearchIcon />
           </Button>
@@ -113,8 +110,7 @@ const MainSection = () => {
         display="flex"
         justifyContent="center"
         alignItems="center"
-        minHeight="100vh"
-      >
+        minHeight="100vh">
         <section className="sec-accordion">
           {pageArticles.length > 0 ? (
             pageArticles.map((item) => {

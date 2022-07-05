@@ -37,7 +37,7 @@ const LangProvider = ({ children }) => {
         langBtn: "عربي",
       },
       searchComponent: {
-        keys: "Keys",
+        keyword: "Keyword",
         inputPlaceholder: "Search",
       },
       sidebarComponent: {
@@ -53,7 +53,7 @@ const LangProvider = ({ children }) => {
         langBtn: "English",
       },
       searchComponent: {
-        keys: "الكلمات الداله",
+        keyword: "كلمة البحث",
         inputPlaceholder: "بحث",
       },
       sidebarComponent: {
