@@ -97,10 +97,12 @@ const MainSection = () => {
         <span className="input-btn_container">
           <TextField
             id="txtSearch"
+            className="txtSearch-input"
             placeholder={translated.inputPlaceholder}
             variant="standard"
             value={keyword}
-            onChange={handleOnChange} />
+            onChange={handleOnChange}
+          />
           <Button className="search-btn">
             <SearchIcon />
           </Button>
@@ -110,7 +112,8 @@ const MainSection = () => {
         display="flex"
         justifyContent="center"
         alignItems="center"
-        minHeight="100vh">
+        minHeight="100vh"
+      >
         <section className="sec-accordion">
           {pageArticles.length > 0 ? (
             pageArticles.map((item) => {

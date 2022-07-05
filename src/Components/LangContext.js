@@ -46,6 +46,10 @@ const LangProvider = ({ children }) => {
         secondFilter: "Secondary service",
         title2: "Last updates",
       },
+      articleComponent: {
+        dropDownTitle: "attachments",
+        title1: "attachments",
+      },
     },
     // arr data
     ar: {
@@ -61,6 +65,10 @@ const LangProvider = ({ children }) => {
         mainFilter: "الخدمة الرئيسية",
         secondFilter: "الخدمة الفرعية",
         title2: "اخر التحديثات",
+      },
+      articleComponent: {
+        dropDownTitle: "مرفقات",
+        title1: "مرفقات",
       },
     },
   };
