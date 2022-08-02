@@ -5,7 +5,7 @@
     background-color: #fff3d0 !important;
   }
   .AccordionDetails {
-    border-top: 2px solid rgb(255, 255, 255) !important;
+    border-top: 2px solid #bf2300 !important;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -21,8 +21,8 @@
       color: #a98549;
     }
   }
-  .select {
-    width: 100px;
+  .lbl-attch{
+    background-color: #000000 !important;
   }
   .article-attachments {
     display: flex;
@@ -31,6 +31,7 @@
     align-items: center;
     gap: 5px;
   }
+  
 }
 @media screen and (max-width: 768px) {
   .accordion-container {

@@ -20,12 +20,12 @@ const Header = () => {
           <span className="logo-icon">
             {<img src={lang === "en" ? enLogo : arLogo} alt="" />}
           </span>
-          <button className="btnNav-lang" onClick={ChangeLang}>
-            <LanguageIcon fontSize="small" />
-            {translated.langBtn}
-          </button>
         </div>
         <h1>Knowledge base</h1>
+        <button className="btnNav-lang" onClick={ChangeLang}>
+          <LanguageIcon fontSize="small" />
+          {translated.langBtn}
+        </button>
       </div>
     </nav>
   );
